@@ -10,6 +10,7 @@ var manifest;
 var totalLoaded = 0;
 
 var titleView = new createjs.Container();
+var gameView = new createjs.Container();
 
 function Main()
 {
@@ -84,8 +85,21 @@ function AddTitleView()
     imgCrow.x = (screenWidth / 2) - (imgCrow.image.width / 2);
     imgCrow.y = (screenHeight / 2) - (imgCrow.image.height / 2);
     imgCrow.name = 'imgCrow';
+    
+    imgCrow.addEventListener('click', onCrowClick);
 
     titleView.addChild(main, imgCrow);
     stage.addChild(imgCrow, titleView);
     stage.update();
+}
+
+function onCrowClick()
+{
+    var rect = new createjs.Rectangle(0, 0, 100, 100);    
+    rect.x = 10;
+    rect.y = 10;
+    
+    gameView.addChild(main, rect);
+    stage.addChild(rect, gameView);
+    stage.update();    
 }
